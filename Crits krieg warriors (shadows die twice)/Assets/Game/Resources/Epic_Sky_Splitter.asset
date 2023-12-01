@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e2e70bae7ad41498be637cf15aa895, type: 3}
+  m_Name: Epic_Sky_Splitter
+  m_EditorClassIdentifier: 
+  Name: Sky Splitter
+  Description: Legend tells that this sword once split the skies in half. Made in
+    the kingdom of the sky and drop down to the mortal realm, this blade is as clear
+    as the sky and the edge as thin as the air itself. A masterfully crafted blade
+    from the best craft's man in all of the sky kingdom. A note is attached to the
+    blade when you first found it. It reads "To whom that wields this weapon, please
+    bring it to the heights of legendary swords for I know it will outshine any other
+    blade of legend".
+  sword: {fileID: 21300000, guid: a21986ee1c3ed374bb813f76be8027f0, type: 3}
+  rarity: 2
+  Scaling: 0.75

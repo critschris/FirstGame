@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8608584866083526231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8608584866083526229}
+  - component: {fileID: 8608584866083526250}
+  m_Layer: 0
+  m_Name: Event
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8608584866083526229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608584866083526231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.0888, y: 15.577236, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8608584866083526250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608584866083526231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57eb8b160749d5489959f1e64d2e7f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ItemSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  swords_player_has: []
+  swords:
+  - {fileID: 11400000, guid: e21180203bd630a4abbf7cbe464bf0dc, type: 2}
+  - {fileID: 11400000, guid: 8be782abc26c60a4b871abfbaf552b62, type: 2}
+  - {fileID: 11400000, guid: 9558b8b38f8a952469e97a0a5cb5c32d, type: 2}
+  - {fileID: 11400000, guid: d4689849f5f6d334f821c6b4037402aa, type: 2}
+  Player: {fileID: 7501526564834327034, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}
+  healthbar: {fileID: 0}
+  easehealthbar: {fileID: 0}
+  PlayerUpgradeButtons: {fileID: 0}
+  PlayerName: {fileID: 0}
+  PlayerLevel: {fileID: 0}
+  PlayerHP: {fileID: 0}
+  Playeratk: {fileID: 0}
+  PlayeratkBuffs: {fileID: 0}
+  PlayerLevelPoints: {fileID: 0}
+  PlayerStatUI: {fileID: 0}
+  Buttons: {fileID: 0}
+  Equipped_Inventory_Sword: {fileID: 0}
+  SwordChanger: {fileID: 0}
+  Enemy_Spawner: {fileID: 0}
+  deathscreen: {fileID: 0}
+  endscreen: {fileID: 0}
+  ParticlesForBigBertha: {fileID: 0}
+  Ability2: {fileID: 0}
+  damagetext_holder: {fileID: 0}
+  Description_Template_holder: {fileID: 0}
+  Fire_Spirit: {fileID: 21300000, guid: ffdeba1149b2a4d478f059474ff3f69b, type: 3}
+  BigBurtha: {fileID: 21300000, guid: a777e60909913f94eab1fb8db212e172, type: 3}
+  exittomainmenu: {fileID: 0}
+  MeteorPrefab: {fileID: 7938585984963862468, guid: 87f8aa3263d5cc046a1e26e470b626a5, type: 3}

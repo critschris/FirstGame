@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e2e70bae7ad41498be637cf15aa895, type: 3}
+  m_Name: Legendary_Big_Burtha
+  m_EditorClassIdentifier: 
+  Name: Big Burtha
+  Description: This is the most powerful sword you have ever come across. The blade
+    eminates the fury of flames that matches that of the sun itself. Each swing of
+    the sword creates a huge swirl of flame engulfing all that is inside. The blade
+    also seemingly gives a surge of energy through your body and gives you strength
+    beyond your wildest imagination.
+  sword: {fileID: 21300000, guid: a777e60909913f94eab1fb8db212e172, type: 3}
+  rarity: 3
+  Scaling: 1.5
+  Ability2CoolDown: 7

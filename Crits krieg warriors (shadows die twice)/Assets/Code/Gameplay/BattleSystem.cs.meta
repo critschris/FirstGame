@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: caedbc177be13f24b944be87e8e63699
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {fileID: 6496368276776775924, guid: 43ffb231e75d9f245aa95a0513c685cb, type: 3}
+  - enemy: {fileID: 3227846776430173848, guid: e2f09be9817844643b63812088cf364c, type: 3}
+  - playerBattleSation: {fileID: 5997639045985862581, guid: 9436e69f72af2df419c20dc46db36f74, type: 3}
+  - enemyBattleSation: {fileID: 3628104180972472189, guid: de09499802197e14eb1e3ae08f066452, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
