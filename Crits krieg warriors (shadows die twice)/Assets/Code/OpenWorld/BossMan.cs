@@ -40,6 +40,8 @@ public class BossMan : MonoBehaviour
     public Transform teleport_position_for_player;
 
     public Camera mainCamera;
+
+    public GameObject endscreen;
     // Start is called before the first frame update
     void Awake()
     {
@@ -88,6 +90,9 @@ public class BossMan : MonoBehaviour
         if (BossHP.cHP<0)
         {
             Boss.SetActive(false);
+            Player.SetActive(false);
+            endscreen.SetActive(true);
+            Time.timeScale = 0;
         }
         
     }

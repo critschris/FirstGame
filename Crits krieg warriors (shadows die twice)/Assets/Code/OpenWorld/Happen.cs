@@ -18,7 +18,7 @@ public class Happen : MonoBehaviour
     public Swords[] swords;
 
     //Player Objects and UI
-    public PlayerStats PlayerStats;
+    public StatSaver PlayerStats;
     public GameObject Player;
     Unit PlayerUnit;
     float currenthealth;
@@ -94,10 +94,11 @@ public class Happen : MonoBehaviour
         Time.timeScale = 1;
 
         if (firsttime) {
+            Debug.Log("Reset stuff");
             FindObjectOfType<AudioManager>().Play("BGM");
             swords_player_has = new Swords[1];
             swords_player_has[0] = swords[0];
-
+            //PlayerStats.Reset();
             PlayerUnit = Player.GetComponent<Unit>();
             PlayerUnit.EquipSword(swords_player_has[0]);
             firsttime = false;
@@ -138,32 +139,22 @@ public class Happen : MonoBehaviour
 
     public void SavePlayerStats()
     {
-        PlayerStats.setName(PlayerUnit.name);
-        PlayerStats.setHP(PlayerUnit.maxHP,PlayerUnit.cHP);
-        PlayerStats.setlevel(PlayerUnit.level);
-        PlayerStats.setStamina(PlayerUnit.maxStamina);
-        PlayerStats.setatk(PlayerUnit.atk);
-        PlayerStats.setsword(PlayerUnit.sword);
-        PlayerStats.setlevelpoints(PlayerUnit.levelpoints);
+        PlayerStats.setStats(PlayerUnit.name, PlayerUnit.level, PlayerUnit.maxHP, PlayerUnit.cHP, PlayerUnit.maxStamina, PlayerUnit.cStamina, PlayerUnit.atk, PlayerUnit.levelpoints, PlayerUnit.sword);
     }
 
     public void LoadPlayerStatsOnPlayer()
     {
-        PlayerUnit.name = PlayerStats.getName();
-        PlayerUnit.maxHP = PlayerStats.getmaxHP();
-        PlayerUnit.cHP = PlayerStats.getcHP();
-        PlayerUnit.level = PlayerStats.getlevel();
-        PlayerUnit.atk = PlayerStats.getatk();
-        PlayerUnit.levelpoints = PlayerStats.getlevelpoints();
-        PlayerUnit.maxStamina = PlayerStats.getmaxStamina();
-        PlayerUnit.cStamina = PlayerUnit.maxStamina;
-        PlayerUnit.levelpoints = PlayerStats.getlevelpoints();
-        PlayerUnit.sword = PlayerStats.getsword();
+        PlayerStats.ApplyStats(PlayerUnit);
     }
 
     public void SetTimeScaleToOne()
     {
         Time.timeScale = 1;
+    }
+
+    public void SetTimeScaletoZero()
+    {
+        Time.timeScale = 0;
     }
 
     public void LoadMainMenu()
@@ -191,6 +182,7 @@ public class Happen : MonoBehaviour
     {
         PlayerUnit.EquipSword(a);
     }
+
 
 
     public void AddSwordToInventory(Swords newSword)
@@ -388,6 +380,7 @@ public class Happen : MonoBehaviour
 
         {
             Player.SetActive(false);
+            PlayerStats.Reset();
             deathscreen.SetActive(true);
             Time.timeScale = 0;
         }
