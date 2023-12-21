@@ -89,7 +89,7 @@ public class Follow_Enemies : MonoBehaviour
             
             
             Unit hit = Hit_Player.GetComponent<Unit>();
-            hit.cHP = hit.cHP - 10;
+            hit.takeDamage(10F);
 
             charging = false;
             animator.SetBool("Charging", false);

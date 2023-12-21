@@ -22,4 +22,5 @@ MonoBehaviour:
     blade of legend".
   sword: {fileID: 21300000, guid: a21986ee1c3ed374bb813f76be8027f0, type: 3}
   rarity: 2
-  Scaling: 0.75
+  Scaling: 1
+  Ability2CoolDown: 0

@@ -23,6 +23,7 @@ public class FallingMeteor : MonoBehaviour
         yield return new WaitForSeconds(1F);
         Meteor.SetActive(false);
         ImpactAnimator.SetTrigger("Impact");
+        FindObjectOfType<AudioManager>().Play("Meteor");
         Collider2D[] hit_enemies = Physics2D.OverlapCircleAll(transform.position,attackradius);
         if (hit_enemies.Length>0)
         {

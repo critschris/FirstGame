@@ -20,4 +20,5 @@ MonoBehaviour:
     just a Isekai plot and deduct the that the writer is very lazy.
   sword: {fileID: 0}
   rarity: 1
-  Scaling: 0.5
+  Scaling: 0.75
+  Ability2CoolDown: 0

@@ -32,7 +32,7 @@ public class BossMan : MonoBehaviour
     public Transform pivotForpullingAttackArea;
     public Animator attacOutLinePullingYouInAnimator;
     public PullingInAttack pullingInAttack;
-    public bool IsPullingInHori = true;
+    public bool IsPullingInHori = false;
     public Transform slammingArea;
 
     public GameObject MeteorPrefab;
@@ -40,6 +40,11 @@ public class BossMan : MonoBehaviour
     public Transform teleport_position_for_player;
 
     public Camera mainCamera;
+
+    public GameObject smiteeffectprefab;
+
+    public MoonaFireWeaponParent MoonaFireWeapon;
+    bool once = false;
 
     public GameObject endscreen;
     // Start is called before the first frame update
@@ -56,6 +61,9 @@ public class BossMan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
         if ((pillarchecker) && Input.GetKeyDown(KeyCode.E) && (floatingE_Animator.GetBool("Appear") == true))
         {
             Boss.SetActive(true);
@@ -87,14 +95,8 @@ public class BossMan : MonoBehaviour
             }
         }
 
-        if (BossHP.cHP<0)
-        {
-            Boss.SetActive(false);
-            Player.SetActive(false);
-            endscreen.SetActive(true);
-            Time.timeScale = 0;
-        }
         
+
     }
 
 
@@ -109,7 +111,7 @@ public class BossMan : MonoBehaviour
         BossHealth.SetActive(true);
         mainCamera.orthographicSize = 10;
 
-       // while (true) {
+        while (Boss.activeInHierarchy) {
             yield return new WaitForSeconds(8F);//Second 8 of the song
             playerUnit.setStunned(false);
 
@@ -133,88 +135,74 @@ public class BossMan : MonoBehaviour
             BossHP.Shielded = false;
             //yield return new WaitForSeconds(1F);
             StartCoroutine(AttackPlayerPullingIn());//46
-            yield return new WaitForSeconds(5F);//51
+            yield return new WaitForSeconds(5F);//51 
             StartCoroutine(AttackPlayerPullingIn());//52
             yield return new WaitForSeconds(1F);
             yield return new WaitForSeconds(5F);
             StartCoroutine(AttackPlayer_Thrust());//57
             yield return new WaitForSeconds(3F);
             StartCoroutine(AttackPlayer_Thrust());//1:00
-            
-            for (int i=0; i<5;i++)
+
+            for (int i = 0; i < 5; i++)
             {
                 yield return new WaitForSeconds(2F);
                 StartCoroutine(AttackPlayer_Thrust());
             }
-        
+            //1:10
+            yield return new WaitForSeconds(2F);
+            StartCoroutine(AttackPlayer_Thrust());
+            StartCoroutine(MeteorInPlace());//1:12
+            yield return new WaitForSeconds(5F);
+            StartCoroutine(AttackPlayerPullingIn());//1:17
+            yield return new WaitForSeconds(3F);
+            StartCoroutine(FireProjectTile());
+            once = true;
+            //1:20 projectile
+            //1:22 explode
 
-        StartCoroutine(AttackPlayer_Thrust());
-        Debug.Log(Time.time-temp);
-        Debug.Log("Done For now");
-      //  }
-        /*
-        yield return new WaitForSeconds(3F);//Second 10 of the song
-        StartCoroutine(AttackPlayer_Thrust());//Second 11 after finishing this coroutine 
-        yield return new WaitForSeconds(3F);//Second 13 of the song
-        StartCoroutine(AttackPlayer_Thrust());//Second 14 after finishing this coroutine
-        yield return new WaitForSeconds(3F);//Second 16 of the song
-        StartCoroutine(AttackPlayer_Thrust());//Second 17 after finishing this coroutine
-        yield return new WaitForSeconds(3F);//Second 19 of the song
-        StartCoroutine(AttackPlayer_Thrust());//Second 20 after finishing this coroutine
-        yield return new WaitForSeconds(2F);//
-        StartCoroutine(AttackPlayer_Thrust());//Second 22 after finishing this coroutine
-        yield return new WaitForSeconds(2F);//23
-        Darken.SetBool("Darken", true);
-        StartCoroutine(AttackPlayer_Thrust());//24 after finishing this coroutine
-        yield return new WaitForSeconds(11F);//34 at the end
-        
-        //Shielded phase
-        BossHP.Shielded = true;
-        Debug.Log("Shielded");
-        yield return new WaitForSeconds(11F);//45
-        BossHP.Shielded = false;
-        //yield return new WaitForSeconds(1F);//46
-        //
-        StartCoroutine(AttackPlayerPullingIn());//46
-        yield return new WaitForSeconds(5F);//51
-        StartCoroutine(AttackPlayerPullingIn());//52
-        yield return new WaitForSeconds(1F);//52 
-
-        yield return new WaitForSeconds(5F);
-        StartCoroutine(AttackPlayer_Thrust());//57
-        yield return new WaitForSeconds(3F);
-        StartCoroutine(AttackPlayer_Thrust());//1:00
-        yield return new WaitForSeconds(3F);
-        StartCoroutine(AttackPlayer_Thrust());//1:03*/
+            Debug.Log(Time.time - temp);
 
 
-        
-        
+            Debug.Log("Done For now");
+        }
+    }
 
 
+    IEnumerator FireProjectTile()
+    {
+        if (!once) {
+            while (Boss.activeInHierarchy)
+            {
+                yield return new WaitForSeconds(5F);
+                MoonaFireWeapon.Aim();
+                MoonaFireWeapon.Fire();
+
+            }
+        }
     }
 
     IEnumerator AttackPlayerPullingIn()
     {
-       /* if (IsPullingInHori==true)
+        if (IsPullingInHori==true)
         {
             IsPullingInHori = false;
-            pivotForpullingAttackArea.transform.Rotate(Vector3.forward,-45);
+            pivotForpullingAttackArea.transform.Rotate(Vector3.forward*(-45F));
         }
         else
         {
             IsPullingInHori = true;
-            pivotForpullingAttackArea.transform.Rotate(Vector3.forward, 45);
-        }*/
+            pivotForpullingAttackArea.transform.Rotate(Vector3.forward*45F);
+        }
         attacOutLinePullingYouInAnimator.SetBool("Appear",true);
+        yield return new WaitForSeconds(0.5F);
         pullingInAttack.Catcher(playerUnit);
-        
         if (pullingInAttack.hitPlayer==true)
         {
             Player.transform.position = slammingArea.transform.position;
         }
-        yield return new WaitForSeconds(1F);
+        yield return new WaitForSeconds(1.5F);
         attacOutLinePullingYouInAnimator.SetBool("Appear", false);
+        Instantiate(smiteeffectprefab,Player.transform);
         pullingInAttack.SlamKwan(playerUnit,playerUnit.maxHP*0.2F);
         playerUnit.Stunned = false;
     }
@@ -247,6 +235,13 @@ public class BossMan : MonoBehaviour
         
     }
 
+    IEnumerator MeteorInPlace()
+    {
+        yield return new WaitForSeconds(0.5F);
+        Vector2 aimMeteor = new Vector2(playerposition.x , playerposition.y );
+        Instantiate(MeteorPrefab, aimMeteor, Quaternion.identity);
+    }
+
     public void Interact_with_Moona_Boss_Pillar()
     {
         
@@ -275,6 +270,15 @@ public class BossMan : MonoBehaviour
         {
             easehealthbar.value = Mathf.Lerp(easehealthbar.value, healthbar.value, 0.01f);
         }
-        
+
+        if (BossHP.Isdead)
+        {
+            Boss.SetActive(false);
+            Player.SetActive(false);
+            endscreen.SetActive(true);
+            Time.timeScale = 0;
+            FindObjectOfType<AudioManager>().PauseAll();
+        }
+
     }
 }

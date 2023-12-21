@@ -64,13 +64,28 @@ public class AudioManager : MonoBehaviour
         Debug.LogWarning("No sounds found with name " + name);
         return;
     }
+    
+    public void PauseAll()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.Pause();
+        }
+    }
+
+    public void UnPauseAll()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.UnPause();
+        }
+    }
 
     public void StopAll()
     {
         foreach (Sound s in sounds)
         {
                 s.source.Stop();
-                return;
         }
     }
 

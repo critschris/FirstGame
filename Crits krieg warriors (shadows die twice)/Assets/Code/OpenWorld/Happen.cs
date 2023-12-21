@@ -149,11 +149,13 @@ public class Happen : MonoBehaviour
 
     public void SetTimeScaleToOne()
     {
+        FindObjectOfType<AudioManager>().UnPauseAll();
         Time.timeScale = 1;
     }
 
     public void SetTimeScaletoZero()
     {
+        FindObjectOfType<AudioManager>().PauseAll();
         Time.timeScale = 0;
     }
 
@@ -170,7 +172,7 @@ public class Happen : MonoBehaviour
 
     IEnumerator IntroToEnemy()
     {
-        
+        FindObjectOfType<AudioManager>().PauseAll();
         yield return new WaitForSeconds(1f);
         Description_Template_holder.SetActive(true);
         description_Template.Start();
@@ -325,6 +327,11 @@ public class Happen : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void exitToMainMenu()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     void Update()
     {
 
@@ -339,6 +346,7 @@ public class Happen : MonoBehaviour
         {
             EquipSwordToUnit(Sword_Stand_Holder.sword_In_Sword_Stand);
             change_Weapon = true;
+            FindObjectOfType<AudioManager>().PauseAll();
             Time.timeScale = 0;
             Description_Template_holder.SetActive(true);
             description_Template.Start();

@@ -111,7 +111,7 @@ public class WeaponParent : MonoBehaviour
         Debug.Log("Ability 2 Activated");
         FlameThrower.damage = playerdamage;
 
-
+        FindObjectOfType<AudioManager>().Play("FlameThrower"); 
         for (int i = 0; i < 10; i++)
         {
             FlameThrower.direction = direction;
@@ -121,6 +121,7 @@ public class WeaponParent : MonoBehaviour
         }
         FlameThrower.direction = direction;
         Instantiate(FlameThrowerPrefab, PlayerPosition.position + new Vector3(direction.x*2, direction.y*2, 0), Quaternion.identity);
+        FindObjectOfType<AudioManager>().Stop("FlameThrower"); 
     }
 
     private void OnDrawGizmos()

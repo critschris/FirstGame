@@ -64,7 +64,7 @@ public class Unit : MonoBehaviour
             tempdamage = 0;
         }
 
-            float currenthp = this.cHP - tempdamage;
+            float currenthp = cHP - tempdamage;
 
             if (floating_Textprefab != null)
             {
