@@ -66,7 +66,6 @@ public class BossMan : MonoBehaviour
 
         if ((pillarchecker) && Input.GetKeyDown(KeyCode.E) && (floatingE_Animator.GetBool("Appear") == true))
         {
-            Boss.SetActive(true);
             Interact_with_Moona_Boss_Pillar();
         }
 
@@ -110,10 +109,12 @@ public class BossMan : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("BossMusic");
         BossHealth.SetActive(true);
         mainCamera.orthographicSize = 10;
-
+        yield return new WaitForSeconds(1F);//Second 8 of the song
+        playerUnit.setStunned(false);
+        yield return new WaitForSeconds(5F);
+        Boss.SetActive(true);
+        yield return new WaitForSeconds(2F);
         while (Boss.activeInHierarchy) {
-            yield return new WaitForSeconds(8F);//Second 8 of the song
-            playerUnit.setStunned(false);
 
             for (int i = 0; i < 4; i++)
             {

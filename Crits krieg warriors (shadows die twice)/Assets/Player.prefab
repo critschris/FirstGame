@@ -14835,7 +14835,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7501526564834327034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14953,6 +14953,7 @@ MonoBehaviour:
   rb: {fileID: 7501526564834327025}
   animator: {fileID: 7501526564834327038}
   playersword: {fileID: 0}
+  swordscaling: 0
   effectsAnimator: {fileID: 7501526562945839303}
   solidObjectLayer:
     serializedVersion: 2

@@ -47,6 +47,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: cef40ac06ba7c6c47abf7198c999cbdd, type: 3}
     - {fileID: 2800000, guid: 7274323a528c0fb4c88f1e2117d5058d, type: 3}
     - {fileID: 2800000, guid: eb9f70439d0430246bfb06b6f0a834b1, type: 3}
+    - {fileID: 2800000, guid: 57aeff18480be7c449472903610c35fa, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -152,6 +153,15 @@ SpriteAtlas:
   - {fileID: 854778313, guid: cef40ac06ba7c6c47abf7198c999cbdd, type: 3}
   - {fileID: -1957392846, guid: eb9f70439d0430246bfb06b6f0a834b1, type: 3}
   - {fileID: 2084960337, guid: eb9f70439d0430246bfb06b6f0a834b1, type: 3}
+  - {fileID: 1147707210, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: 102636141, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: -1309580178, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: -1126046951, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: -1900452080, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: 1444062895, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: 1015672057, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: -528934182, guid: 57aeff18480be7c449472903610c35fa, type: 3}
+  - {fileID: 591903293, guid: 57aeff18480be7c449472903610c35fa, type: 3}
   - {fileID: 1273277954, guid: 7274323a528c0fb4c88f1e2117d5058d, type: 3}
   - {fileID: 633933050, guid: 7274323a528c0fb4c88f1e2117d5058d, type: 3}
   - {fileID: -945329539, guid: 7274323a528c0fb4c88f1e2117d5058d, type: 3}
@@ -1326,6 +1336,15 @@ SpriteAtlas:
   - tileset_94
   - boss_pillar_0
   - boss_pillar_1
+  - dungeon_tiles_4
+  - dungeon_tiles_5
+  - dungeon_tiles_6
+  - dungeon_tiles_7
+  - dungeon_tiles_0
+  - dungeon_tiles_1
+  - dungeon_tiles_2
+  - dungeon_tiles_3
+  - dungeon_tiles_8
   - Overworld_827
   - Overworld_837
   - Overworld_847

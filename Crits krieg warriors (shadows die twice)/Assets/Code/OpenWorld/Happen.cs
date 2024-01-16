@@ -82,10 +82,10 @@ public class Happen : MonoBehaviour
 
     public GameObject MeteorPrefab;
 
-
     private void Awake()
     {
         weaponParent = Player.GetComponentInChildren<WeaponParent>();
+        damagetext = damagetext_holder.GetComponent<Text>();
     }
 
     // Start is called before the first frame update
@@ -127,7 +127,9 @@ public class Happen : MonoBehaviour
         Debug.Log("Load Saved stats");
         LoadPlayerStatsOnPlayer();
 
-        damagetext = damagetext_holder.GetComponent<Text>();
+        SwordSetUp();
+
+        
 
         description_Template = Description_Template_holder.GetComponent<Description_Template>();
 
@@ -315,6 +317,19 @@ public class Happen : MonoBehaviour
             easehealthbar.value = Mathf.Lerp(easehealthbar.value, healthbar.value, 0.01f);
         }
 
+    }
+
+    public void SwordSetUp()
+    {
+        Image_of_Sword.sprite = PlayerUnit.sword.getSprite();
+        if (PlayerUnit.sword.getName().Equals("Big Burtha"))
+        {
+            ParticlesForBigBertha.SetActive(true);
+            Ability2.SetActive(true);
+            weaponParent.animator.SetBool("IsBigBertha", true);
+            Player.GetComponent<Player_Movement>().setAbility2up();
+        }
+        
     }
 
     public void LoadTester()

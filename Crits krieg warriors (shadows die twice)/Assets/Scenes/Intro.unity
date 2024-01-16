@@ -484,7 +484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thou are now far from the realm of stickmen
+  m_text: 'Thou are now far from thy realm
 
 '
   m_isRightToLeft: 0
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HEED THIS CALL AND PUT THESE FOOLISH PIXELS BACK IN THEIR PLACE
+  m_text: 'HEED THIS CALL
 
 '
   m_isRightToLeft: 0

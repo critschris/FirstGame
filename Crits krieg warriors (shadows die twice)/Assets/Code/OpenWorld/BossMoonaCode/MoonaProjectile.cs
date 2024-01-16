@@ -8,6 +8,7 @@ public class MoonaProjectile : MonoBehaviour
     public float flyingspeed = 20F;
     public float Destroytime = 5F;
     float timer = 0;
+    public float damage;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class MoonaProjectile : MonoBehaviour
         Unit unithit = collision.GetComponent<Unit>();
         if (unithit!=null&&unithit.name!= "Moona Hoshinova")
         {
-            unithit.takeDamage(10F);
+            unithit.takeDamage(damage);
             Destroy(gameObject);
         }
     }

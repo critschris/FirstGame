@@ -228,6 +228,7 @@ public class Player_Movement : MonoBehaviour
         Ability2CoolDownTime = playersword.getAbility2CoolDown();
         Ability2CoolDownTimeCounter = Ability2CoolDownTime;
         CoolDown2Blurr = CoolDown2BlurrObject.GetComponent<Image>();
+        CoolDown2Blurr.fillAmount = 1;
     }
 
     //Old movement
