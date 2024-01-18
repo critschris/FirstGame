@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Reset_area: {fileID: 0}
+  Reset_area: {fileID: 4095232122752544943}
 --- !u!1 &1958331175937046102
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9347de65cb91afe4aa3c95613da44ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies: []
   Spawnpoints:
   - {fileID: 4095232124439881827}
   - {fileID: 4095232122624348729}
@@ -3444,7 +3445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Reset_area: {fileID: 0}
+  Reset_area: {fileID: 4095232122752544943}
 --- !u!1 &4095232122624348730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5406,7 +5407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Reset_area: {fileID: 0}
+  Reset_area: {fileID: 4095232122752544943}
 --- !u!1 &5938192037969734852
 GameObject:
   m_ObjectHideFlags: 0

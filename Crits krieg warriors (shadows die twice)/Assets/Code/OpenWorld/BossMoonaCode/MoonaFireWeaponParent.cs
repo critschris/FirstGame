@@ -11,7 +11,7 @@ public class MoonaFireWeaponParent : MonoBehaviour
 
     public void Start()
     {
-        //StartCoroutine(FireTest());
+        playerposition = FindObjectOfType<Player_Movement>().gameObject.transform;
     }
 
     IEnumerator FireTest()
@@ -32,6 +32,7 @@ public class MoonaFireWeaponParent : MonoBehaviour
     }
 
     public void Fire(){
+        FindObjectOfType<AudioManager>().Play("Moona_Projectile");
         Instantiate(Projectileprefab,firepoint.position,firepoint.rotation);
     }
 
