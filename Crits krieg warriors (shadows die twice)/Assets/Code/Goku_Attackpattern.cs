@@ -31,6 +31,7 @@ public class Goku_Attackpattern : MonoBehaviour
     {
         Goku = gameObject.GetComponent<Unit>();
         playerposition = FindObjectOfType<Player_Movement>().gameObject.transform;
+        dungeonCam = FindObjectOfType<DungeonCam>();
     }
 
     private void Start()
@@ -40,37 +41,38 @@ public class Goku_Attackpattern : MonoBehaviour
 
     IEnumerator AttackPattern()
     {
-       // while(true){
-            yield return new WaitForSeconds(3F);
+       while(true){
+            yield return new WaitForSeconds(1F);
             Charge = true;
             FindObjectOfType<AudioManager>().Play("Kamehame");
             ParticleForKame.SetActive(true);
         //
-            yield return new WaitForSeconds(3.5F);
-        ParticleForKame.SetActive(false);
-        GokuAnimator.SetBool("End", false);
-        KameAnimator.SetBool("End", false);
-        Fire = true;
-        KamePointFixer();
-        BeamBefore = true;
-        yield return new WaitForSeconds(0.5F);
-        Kame = true;
+            yield return new WaitForSeconds(2.5F);
+            ParticleForKame.SetActive(false);
+            GokuAnimator.SetBool("End", false);
+            KameAnimator.SetBool("End", false);
+            Fire = true;
+            KamePointFixer();
+            BeamBefore = true;
+            yield return new WaitForSeconds(0.5F);
+            Kame = true;
        
-        FireKameHameHa();
-        //StartCoroutine(dungeonCam.Shake(1,0.25F));
-            yield return new WaitForSeconds(1F);
-        ResetRotation();
-        Charge = false;
-        GokuAnimator.SetBool("Charge", Charge);
-        GokuAnimator.SetBool("End", true);
-        Fire = false;
-        BeamBefore = false;
-        KameAnimator.SetBool("BeamBefore", BeamBefore);
-        KameAnimator.SetBool("End", true);
+            FireKameHameHa();
+            StartCoroutine(dungeonCam.Shake(1,0.25F));
+                yield return new WaitForSeconds(1F);
+            ResetRotation();
+            Charge = false;
+            GokuAnimator.SetBool("Charge", Charge);
+            GokuAnimator.SetBool("End", true);
+            Fire = false;
+            BeamBefore = false;
+            KameAnimator.SetBool("BeamBefore", BeamBefore);
+            KameAnimator.SetBool("End", true);
         
-        Kame = false;
-
-        // }
+            Kame = false;
+            float random = Random.Range(2, 5);
+            yield return new WaitForSeconds(random);
+        }
     }
 
     // Update is called once per frame

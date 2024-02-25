@@ -18,6 +18,8 @@ public class OutOfBounds : MonoBehaviour
         {
 
             Player.transform.position = Reset_area.position;
+            Unit playerUnit = Player.GetComponent<Unit>();
+            playerUnit.cHP -= playerUnit.cHP*0.2F;
 
         }
     }

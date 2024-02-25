@@ -18,12 +18,14 @@ public class BossMan : MonoBehaviour
     private Player_Movement player_Movement;
 
     public GameObject Boss;
+    public GameObject bottomSpriteHolder;
     public GameObject BossHealth;
     Unit BossHP;
     float currenthealth;
     public Slider healthbar;
     public Slider easehealthbar;
     SpriteRenderer Boss_Sprite_Renderer;
+    SpriteRenderer BottomSprite;
     public Animator BossAnimator;
     public Boss_Moona_WeaponParent boss_Moona_WeaponParent;
     public Animator attackOutlineAnimator;
@@ -56,6 +58,7 @@ public class BossMan : MonoBehaviour
         Boss_Sprite_Renderer = Boss.GetComponent<SpriteRenderer>();
         playerUnit = Player.GetComponent<Unit>();
         floatingE_Animator = BossPillar.GetComponentInChildren<Animator>();
+        BottomSprite = bottomSpriteHolder.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -258,6 +261,7 @@ public class BossMan : MonoBehaviour
     void flip()
     {
         Boss_Sprite_Renderer.flipX = !Boss_Sprite_Renderer.flipX;
+        BottomSprite.flipX = !BottomSprite.flipX;
     }
 
     public void healthupdate()

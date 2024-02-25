@@ -48,6 +48,7 @@ public class Happen : MonoBehaviour
     public GameObject SwordChanger;
     private Animator Sword_Stand_1_E_Animator;
     private SwordChange Sword_Stand_Holder;
+    private GameObject PillarInteract;
 
     //
     public GameObject Enemy_Spawner;
@@ -86,6 +87,7 @@ public class Happen : MonoBehaviour
     {
         weaponParent = Player.GetComponentInChildren<WeaponParent>();
         damagetext = damagetext_holder.GetComponent<Text>();
+        PillarInteract = SwordChanger.GetComponentInChildren<Pillar_Interaction>().gameObject;
     }
 
     // Start is called before the first frame update
@@ -115,6 +117,8 @@ public class Happen : MonoBehaviour
         currentdamage = PlayerUnit.atk + PlayerUnit.atk * PlayerUnit.sword.getScaling();
 
         EnemySpawner_E_Animator = Enemy_Spawner.GetComponentInChildren<Animator>();
+
+        DeActivePillar();
 
         enemycHP = new float[enemies.Length];
 
@@ -345,6 +349,16 @@ public class Happen : MonoBehaviour
     public void exitToMainMenu()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void DeActivePillar()
+    {
+        PillarInteract.SetActive(false);
+    }
+
+    public void ActivePillar()
+    {
+        PillarInteract.SetActive(true);
     }
 
     void Update()

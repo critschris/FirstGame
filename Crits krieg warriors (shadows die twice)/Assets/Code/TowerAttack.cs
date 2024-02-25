@@ -18,6 +18,7 @@ public class TowerAttack : MonoBehaviour
             moonaFireWeaponParent.Aim();
             moonaFireWeaponParent.Fire();
             counter = 0;
+            timer = Random.Range(1, 3.5F);
         }
         else
         {
