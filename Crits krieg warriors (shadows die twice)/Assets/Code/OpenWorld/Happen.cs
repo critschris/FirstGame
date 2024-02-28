@@ -18,6 +18,8 @@ public class Happen : MonoBehaviour
     public Swords[] swords;
 
     //Player Objects and UI
+    public StatSaver PlayerBaseStats;
+    public StatSaver StatsForDungeon;
     public StatSaver PlayerStats;
     public GameObject Player;
     Unit PlayerUnit;
@@ -129,7 +131,8 @@ public class Happen : MonoBehaviour
         }
 
         Debug.Log("Load Saved stats");
-        LoadPlayerStatsOnPlayer();
+        LoadBaseStats();
+        PlayerStats.Reset();
 
         SwordSetUp();
 
@@ -146,6 +149,16 @@ public class Happen : MonoBehaviour
     public void SavePlayerStats()
     {
         PlayerStats.setStats(PlayerUnit.name, PlayerUnit.level, PlayerUnit.maxHP, PlayerUnit.cHP, PlayerUnit.maxStamina, PlayerUnit.cStamina, PlayerUnit.atk, PlayerUnit.levelpoints, PlayerUnit.sword);
+    }
+
+    public void LoadBaseStats()
+    {
+        PlayerBaseStats.ApplyStats(PlayerUnit);
+    }
+
+    public void LoadStatsForDungeon()
+    {
+        StatsForDungeon.ApplyStats(PlayerUnit);
     }
 
     public void LoadPlayerStatsOnPlayer()

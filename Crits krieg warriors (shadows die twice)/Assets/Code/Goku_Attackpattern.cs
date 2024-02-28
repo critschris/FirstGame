@@ -26,12 +26,20 @@ public class Goku_Attackpattern : MonoBehaviour
     public Transform KameFirePoint;
     public GameObject Projectileprefab;
 
+    public float movementSpeed;
+    public Vector2 input;
+    Rigidbody2D rb;
+    public bool moving;
+    public float movingCounter = 0;
+    float movingTime = 1f;
+
     // Start is called before the first frame update
     void Awake()
     {
         Goku = gameObject.GetComponent<Unit>();
         playerposition = FindObjectOfType<Player_Movement>().gameObject.transform;
         dungeonCam = FindObjectOfType<DungeonCam>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -42,7 +50,10 @@ public class Goku_Attackpattern : MonoBehaviour
     IEnumerator AttackPattern()
     {
        while(true){
-            yield return new WaitForSeconds(1F);
+            float random = Random.Range(2, 6);
+            randomMovement();
+            yield return new WaitForSeconds(random);
+            
             Charge = true;
             FindObjectOfType<AudioManager>().Play("Kamehame");
             ParticleForKame.SetActive(true);
@@ -70,8 +81,7 @@ public class Goku_Attackpattern : MonoBehaviour
             KameAnimator.SetBool("End", true);
         
             Kame = false;
-            float random = Random.Range(2, 5);
-            yield return new WaitForSeconds(random);
+            yield return new WaitForSeconds(1F);
         }
     }
 
@@ -121,6 +131,20 @@ public class Goku_Attackpattern : MonoBehaviour
 
     }
 
+    public void FixedUpdate()
+    {
+        if (movingCounter>movingTime)
+        {
+            moving = false;
+        }
+        else
+        {
+            movingCounter += Time.fixedDeltaTime;
+            MoveGoku();
+        }
+        
+    }
+
     public void ResetRotation()
     {
         Vector2 direction = new Vector2(1,0);
@@ -161,5 +185,120 @@ public class Goku_Attackpattern : MonoBehaviour
     public void FireKameHameHa()
     {
         Instantiate(Projectileprefab, KameFirePoint.position, KameFirePoint.rotation);
+    }
+
+    public void randomMovement()
+    {
+        
+        
+        Vector2 direction = new Vector2(-1,0);
+        Vector3 playerposition = FindAnyObjectByType<Player_Movement>().gameObject.transform.position;
+
+        Vector3 Gokuposition = gameObject.transform.position;
+
+        Vector3 aiming = playerposition - Gokuposition;
+
+        int way = 0;
+        if (aiming.x>=0&&aiming.y>=0)
+        {
+            way = 0;
+        }
+        else if (aiming.x >= 0 && aiming.y < 0)
+        {
+            way = 1;
+        }
+        else if (aiming.x < 0 && aiming.y < 0)
+        {
+            way = 2;
+        }
+        else if (aiming.x < 0 && aiming.y >= 0)
+        {
+            way = 3;
+        }
+
+        int random = Mathf.FloorToInt(Random.Range(0, 3));
+        if (way==0)
+        {
+            if (random == 0)
+            {
+                direction = new Vector2(0,1);
+            }
+            else if (random == 1)
+            {
+                direction = new Vector2(1, 1);
+            }
+            else if (random ==2)
+            {
+                direction = new Vector2(1, 0);
+            }
+
+        }
+        else if (way == 1)
+        {
+            if (random == 0)
+            {
+                direction = new Vector2(1, 0);
+            }
+            else if (random == 1)
+            {
+                direction = new Vector2(1, -1);
+            }
+            else if (random == 2)
+            {
+                direction = new Vector2(0, -1);
+            }
+
+        }
+        else if (way == 2)
+        {
+            if (random == 0)
+            {
+                direction = new Vector2(0, -1);
+            }
+            else if (random == 1)
+            {
+                direction = new Vector2(-1, -1);
+            }
+            else if (random == 2)
+            {
+                direction = new Vector2(-1, 0);
+            }
+
+        }
+        else if (way == 3)
+        {
+            if (random == 0)
+            {
+                direction = new Vector2(-1, 0);
+            }
+            else if (random == 1)
+            {
+                direction = new Vector2(-1, 1);
+            }
+            else if (random == 2)
+            {
+                direction = new Vector2(0, 1);
+            }
+
+        }
+        //More directions
+        //direction.Normalize();
+        input = direction.normalized;
+
+
+        Vector2 temp = new Vector2(rb.position.x+input.x,rb.position.y+input.y);
+        
+        //destination = temp;
+        moving = true;
+        movingCounter = 0;
+    }
+
+    public void MoveGoku()
+    {
+        if (moving)
+        {
+            input = input.normalized;
+            rb.MovePosition(rb.position + input * movementSpeed * Time.fixedDeltaTime);
+        }
     }
 }

@@ -5168,6 +5168,7 @@ GameObject:
   - component: {fileID: 3847435660373132443}
   - component: {fileID: 3847435660373132436}
   - component: {fileID: 3847435660373132437}
+  - component: {fileID: 8858231177775441635}
   m_Layer: 6
   m_Name: Goku_Enemy
   m_TagString: Untagged
@@ -5276,6 +5277,31 @@ MonoBehaviour:
   GokuHealth: {fileID: 3847435660316908777}
   KameFirePoint: {fileID: 3847435660800619895}
   Projectileprefab: {fileID: 7246123165254954710, guid: 3c247c411bcbce447b7db9ed534a91b5, type: 3}
+  movementSpeed: 3
+  input: {x: 0, y: 0}
+  moving: 0
+  movingCounter: 0
+--- !u!50 &8858231177775441635
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847435660373132441}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &3847435660800619894
 GameObject:
   m_ObjectHideFlags: 0

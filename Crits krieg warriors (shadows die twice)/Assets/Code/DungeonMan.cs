@@ -11,6 +11,8 @@ public class DungeonMan : MonoBehaviour
     public Animator FloatingE_Spawner;
     public Happen Eventsystem;
 
+
+
     public GameObject Player;
 
     int Stagecounter = 0;
@@ -37,7 +39,7 @@ public class DungeonMan : MonoBehaviour
         }
         if (Stagecounter == finalstage && EmptyChecker())
         {
-            End();
+            StartCoroutine(End());
         }
 
     }
@@ -62,10 +64,16 @@ public class DungeonMan : MonoBehaviour
     }
 
 
-    public void End()
+    public IEnumerator End()
     {
-        Player.transform.position = new Vector3(0,0,0);
+        FindObjectOfType<DungeonSceneActivator>().triggerFade();
+        
+        yield return new WaitForSeconds(1);
+        FindObjectOfType<DungeonCam>().ExitDungeon();
+        Player.transform.position = new Vector3(1,5,0);
+        FindObjectOfType<Happen>().LoadPlayerStatsOnPlayer();
         Eventsystem.ActivePillar();
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()

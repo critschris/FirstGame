@@ -18,6 +18,10 @@ public class DungeonSceneActivator : MonoBehaviour
 
     public Animator Fade;
 
+    public bool once =true;
+
+    public float size;
+
     private void Start()
     {
         Cam = Camera.GetComponent<Camera>();
@@ -25,9 +29,11 @@ public class DungeonSceneActivator : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "Player"&&once)
         {
             Debug.Log("Activated cutscene");
+
+            once = false;
             StartCoroutine(Dialog());
             
         }
@@ -37,6 +43,8 @@ public class DungeonSceneActivator : MonoBehaviour
     {
         Instantiate(mapPreFab,Dungeonarea.position,Quaternion.identity);
         FindObjectOfType<AudioManager>().Stop("BGM");
+        FindObjectOfType<Happen>().SavePlayerStats();
+        FindObjectOfType<Happen>().LoadStatsForDungeon();
         yield return new WaitForSeconds(3);
         Fade.SetTrigger("Fade");
         yield return new WaitForSeconds(1);
@@ -44,7 +52,7 @@ public class DungeonSceneActivator : MonoBehaviour
         Camera.GetComponent<DungeonCam>().SetUp();
         Camera.transform.position = new Vector3(0, 47F, -10);
         yield return new WaitForSeconds(1);
-        
+        size = Cam.orthographicSize;
         while(Cam.orthographicSize<9){
             Cam.orthographicSize += 0.5F;
             yield return new WaitForSeconds(0.05F);
@@ -53,4 +61,14 @@ public class DungeonSceneActivator : MonoBehaviour
         //StartCoroutine(Camera.GetComponent<DungeonCam>().Shake(1,0.5F));
 
     }
+    public void triggerFade()
+    {
+        Fade.SetTrigger("Fade");
+    }
+
+    public void camerasizereset()
+    {
+        Cam.orthographicSize = size;
+    }
+    
 }
