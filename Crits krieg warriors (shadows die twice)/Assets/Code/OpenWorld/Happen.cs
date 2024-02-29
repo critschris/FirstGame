@@ -369,7 +369,10 @@ public class Happen : MonoBehaviour
             Player.GetComponent<Player_Movement>().swordscaling = Player.GetComponent<Player_Movement>().playersword.getScaling();
             Player.GetComponent<Player_Movement>().setAbility2up();
         }
-        
+        Player.GetComponent<Player_Movement>().Awake();
+        Player.GetComponent<Player_Movement>().Start();
+        Player.GetComponent<Player_Movement>().swordscaling = Player.GetComponent<Player_Movement>().playersword.getScaling();
+
     }
 
     public void LoadTester()

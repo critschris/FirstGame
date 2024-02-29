@@ -61,6 +61,7 @@ public class DungeonSceneActivator : MonoBehaviour
         }
         FindObjectOfType<Happen>().SetTimeScaletoZero();
         DungeonInfo.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("DungeonBGM");
 
         //StartCoroutine(Camera.GetComponent<DungeonCam>().Shake(1,0.5F));
 

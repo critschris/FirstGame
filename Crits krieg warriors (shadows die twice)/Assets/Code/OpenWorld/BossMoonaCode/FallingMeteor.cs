@@ -31,7 +31,7 @@ public class FallingMeteor : MonoBehaviour
             {
                 if (hit_enemies[i].GetComponent<Unit>()!=null)
                 {
-                    hit_enemies[i].GetComponent<Unit>().takeDamage(20F);
+                    hit_enemies[i].GetComponent<Unit>().takeDamage(10F);
                 }
             }
         }
