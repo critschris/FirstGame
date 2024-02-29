@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Happen : MonoBehaviour
 {
+    public CheckPoint checkPointManager;
+
     public bool firsttime = true;
 
     //
@@ -119,6 +121,7 @@ public class Happen : MonoBehaviour
         currentdamage = PlayerUnit.atk + PlayerUnit.atk * PlayerUnit.sword.getScaling();
 
         EnemySpawner_E_Animator = Enemy_Spawner.GetComponentInChildren<Animator>();
+        description_Template = Description_Template_holder.GetComponent<Description_Template>();
 
         DeActivePillar();
 
@@ -133,12 +136,23 @@ public class Happen : MonoBehaviour
         Debug.Log("Load Saved stats");
         LoadBaseStats();
         PlayerStats.Reset();
+        if (checkPointManager.TrialComplete==true)
+        {
+            EquipSwordToUnit(Sword_Stand_Holder.sword_In_Sword_Stand);
 
+            Image_of_Sword.sprite = PlayerUnit.sword.getSprite();
+            if (PlayerUnit.sword.getName().Equals("Big Burtha"))
+            {
+                ParticlesForBigBertha.SetActive(true);
+                Ability2.SetActive(true);
+                weaponParent.animator.SetBool("IsBigBertha", true);
+            }
+        }
         SwordSetUp();
 
         
 
-        description_Template = Description_Template_holder.GetComponent<Description_Template>();
+        
 
         StartCoroutine(IntroToEnemy());
         
@@ -158,7 +172,9 @@ public class Happen : MonoBehaviour
 
     public void LoadStatsForDungeon()
     {
+        Swords temp =PlayerUnit.sword;
         StatsForDungeon.ApplyStats(PlayerUnit);
+        PlayerUnit.sword = temp;
     }
 
     public void LoadPlayerStatsOnPlayer()
@@ -183,6 +199,10 @@ public class Happen : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void ResetRun()
+    {
+        checkPointManager.TrialComplete = false;
+    }
     IEnumerator ThreeSecondsAndThenMeteorStrike()
     {
         yield return new WaitForSeconds(3f);
@@ -344,6 +364,9 @@ public class Happen : MonoBehaviour
             ParticlesForBigBertha.SetActive(true);
             Ability2.SetActive(true);
             weaponParent.animator.SetBool("IsBigBertha", true);
+            Player.GetComponent<Player_Movement>().Awake();
+            Player.GetComponent<Player_Movement>().Start();
+            Player.GetComponent<Player_Movement>().swordscaling = Player.GetComponent<Player_Movement>().playersword.getScaling();
             Player.GetComponent<Player_Movement>().setAbility2up();
         }
         

@@ -332,7 +332,7 @@ public class BossMan : MonoBehaviour
         attackOutlineAnimator.SetBool("Appear", false);
         BossAnimator.SetTrigger("Thrust");
         boss_Moona_WeaponParent.HitPlayer();
-        boss_Moona_WeaponParent.AttackMethod(playerUnit.maxHP*0.2F);
+        boss_Moona_WeaponParent.AttackMethod(15);
         yield return new WaitForSeconds(0.2F);
         
 

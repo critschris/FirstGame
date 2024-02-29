@@ -48,7 +48,7 @@ public class Player_Movement : MonoBehaviour
 
     public GameObject [] UIstuff;
 
-    private void Awake()
+    public void Awake()
     {
         weaponParent = gameObject.GetComponentInChildren<WeaponParent>();
         CoolDown1Blurr = CoolDown1BlurrObject.GetComponent<Image>();
@@ -56,7 +56,7 @@ public class Player_Movement : MonoBehaviour
 
     }
 
-    private void Start()
+    public void Start()
     {
         IsdashCoolDown = true;
         IsAbility2CoolDown = false;

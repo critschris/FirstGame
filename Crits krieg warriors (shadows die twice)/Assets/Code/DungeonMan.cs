@@ -72,6 +72,8 @@ public class DungeonMan : MonoBehaviour
         FindObjectOfType<DungeonCam>().ExitDungeon();
         Player.transform.position = new Vector3(1,5,0);
         FindObjectOfType<Happen>().LoadPlayerStatsOnPlayer();
+        FindObjectOfType<Happen>().checkPointManager.TrialComplete = true;
+        FindObjectOfType<AudioManager>().Play("BGM");
         Eventsystem.ActivePillar();
         Destroy(gameObject);
     }

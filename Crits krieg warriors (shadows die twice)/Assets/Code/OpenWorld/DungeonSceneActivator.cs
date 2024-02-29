@@ -22,6 +22,8 @@ public class DungeonSceneActivator : MonoBehaviour
 
     public float size;
 
+    public GameObject DungeonInfo;
+
     private void Start()
     {
         Cam = Camera.GetComponent<Camera>();
@@ -57,6 +59,8 @@ public class DungeonSceneActivator : MonoBehaviour
             Cam.orthographicSize += 0.5F;
             yield return new WaitForSeconds(0.05F);
         }
+        FindObjectOfType<Happen>().SetTimeScaletoZero();
+        DungeonInfo.SetActive(true);
 
         //StartCoroutine(Camera.GetComponent<DungeonCam>().Shake(1,0.5F));
 

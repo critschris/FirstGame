@@ -19,7 +19,7 @@ public class MoonaMoveMent : MonoBehaviour
     {
         if (moving)
         {
-            Debug.Log("Moving");
+            //Debug.Log("Moving");
             transform.position = Vector3.MoveTowards(gameObject.transform.position, destination.position, Time.fixedDeltaTime * speed);
             CloseEnough();
         }
