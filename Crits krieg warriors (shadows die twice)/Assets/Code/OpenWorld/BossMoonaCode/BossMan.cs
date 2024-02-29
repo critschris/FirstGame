@@ -6,9 +6,18 @@ using UnityEngine.UI;
 public class BossMan : MonoBehaviour
 {
 
-    
+    public Transform locationzero;
+    public Transform locationone;
+    public Transform locationtwo;
+    public Transform locationthree;
+    public Transform locationfour;
+    public bool moving = false;
+    public Transform destination;
+    public float speed;
 
+    bool nomoresetting=false;
     public GameObject BossPillar;
+    public GameObject PillarGrid;
     private Animator floatingE_Animator;
     private bool pillarchecker=true;
 
@@ -18,6 +27,7 @@ public class BossMan : MonoBehaviour
     private Player_Movement player_Movement;
 
     public GameObject Boss;
+    MoonaMoveMent moonaMoveMent;
     public GameObject bottomSpriteHolder;
     public GameObject BossHealth;
     Unit BossHP;
@@ -59,13 +69,26 @@ public class BossMan : MonoBehaviour
         playerUnit = Player.GetComponent<Unit>();
         floatingE_Animator = BossPillar.GetComponentInChildren<Animator>();
         BottomSprite = bottomSpriteHolder.GetComponent<SpriteRenderer>();
+        moonaMoveMent = Boss.GetComponent<MoonaMoveMent>();
+        BossPillar.SetActive(false);
+        PillarGrid.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         
+
+        if (playerUnit.level>=6&& !nomoresetting)
+        {
+            PillarGrid.SetActive(true);
+            BossPillar.SetActive(true);
+            nomoresetting = true;
+        }
+        else if(playerUnit.level<6)
+        {
+            return;
+        }
 
         if ((pillarchecker) && Input.GetKeyDown(KeyCode.E) && (floatingE_Animator.GetBool("Appear") == true))
         {
@@ -80,10 +103,7 @@ public class BossMan : MonoBehaviour
             {
                 flip();
             }
-            else
-            {
-                return;
-            }
+            
         }
         else
         {
@@ -91,14 +111,21 @@ public class BossMan : MonoBehaviour
             {
                 flip();
             }
-            else
-            {
-                return;
-            }
+            
         }
 
         
 
+    }
+
+    private void FixedUpdate()
+    {
+        /*if (moving)
+        {
+            Debug.Log("Moving");
+            transform.position = Vector3.MoveTowards(Boss.transform.position, destination.position, Time.fixedDeltaTime * speed);
+            CloseEnough();
+        }*/
     }
 
 
@@ -112,11 +139,15 @@ public class BossMan : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("BossMusic");
         BossHealth.SetActive(true);
         mainCamera.orthographicSize = 10;
-        yield return new WaitForSeconds(1F);//Second 8 of the song
+        yield return new WaitForSeconds(1F);
         playerUnit.setStunned(false);
         yield return new WaitForSeconds(5F);
         Boss.SetActive(true);
-        yield return new WaitForSeconds(2F);
+        yield return new WaitForSeconds(1F);
+        //Debug.Log("Move function active to location 2");
+        
+        yield return new WaitForSeconds(1F);
+        moveTo(locationthree);
         while (Boss.activeInHierarchy) {
 
             for (int i = 0; i < 4; i++)
@@ -124,15 +155,21 @@ public class BossMan : MonoBehaviour
                 yield return new WaitForSeconds(3F);
                 StartCoroutine(AttackPlayer_Thrust());
             }
+            moveTo(locationtwo);
             for (int i = 0; i < 2; i++)
             {
                 yield return new WaitForSeconds(2F);
                 StartCoroutine(AttackPlayer_Thrust());
             }
+            //moveTo(locationone);
 
             Darken.SetBool("Darken", true);
             StartCoroutine(AttackPlayer_Thrust());//24 after finishing this coroutine
-            yield return new WaitForSeconds(11F);
+            yield return new WaitForSeconds(5F);
+            moveTo(locationfour);
+            yield return new WaitForSeconds(5F);
+            moveTo(locationzero);
+            yield return new WaitForSeconds(1F);
             BossHP.Shielded = true;
             Debug.Log("Shielded");
             yield return new WaitForSeconds(11F);
@@ -143,27 +180,36 @@ public class BossMan : MonoBehaviour
             StartCoroutine(AttackPlayerPullingIn());//52
             yield return new WaitForSeconds(1F);
             yield return new WaitForSeconds(5F);
+            moveTo(locationone);
             StartCoroutine(AttackPlayer_Thrust());//57
             yield return new WaitForSeconds(3F);
             StartCoroutine(AttackPlayer_Thrust());//1:00
-
+            randomlocation();
             for (int i = 0; i < 5; i++)
             {
+                if (i==2||i==5)
+                {
+                    randomlocation();
+                }
                 yield return new WaitForSeconds(2F);
                 StartCoroutine(AttackPlayer_Thrust());
+
             }
+            
             //1:10
             yield return new WaitForSeconds(2F);
             StartCoroutine(AttackPlayer_Thrust());
             StartCoroutine(MeteorInPlace());//1:12
-            yield return new WaitForSeconds(5F);
+            yield return new WaitForSeconds(2F);
+            moveTo(locationzero);
+            yield return new WaitForSeconds(3F);
             StartCoroutine(AttackPlayerPullingIn());//1:17
             yield return new WaitForSeconds(3F);
             StartCoroutine(FireProjectTile());
             once = true;
             //1:20 projectile
             //1:22 explode
-
+            randomlocation();
             Debug.Log(Time.time - temp);
 
 
@@ -171,6 +217,68 @@ public class BossMan : MonoBehaviour
         }
     }
 
+    public void CloseEnough()
+    {
+        float Bossxcoordinate = Boss.transform.position.x;
+        float Bossycoordiante = Boss.transform.position.y;
+        if (destination.position.x -1 <Bossxcoordinate &&Bossxcoordinate< destination.position.x +1&& destination.position.y - 1< Bossycoordiante&& Bossycoordiante< destination.position.y + 1)
+        {
+            moving = false;
+        }
+        
+    }
+
+    public void randomlocation()
+    {
+        int random = Random.Range(0,5);
+        moveTo(randomIntToLocation(random));
+    }
+
+    public Transform randomIntToLocation(int a)
+    {
+        if (a == 0)
+        {
+            return locationzero;
+        }
+        else if (a==1)
+        {
+            return locationone;
+        }
+        else if (a == 2)
+        {
+            return locationtwo;
+        }
+        else if (a == 3)
+        {
+            return locationthree;
+        }
+        else if (a == 4)
+        {
+            return locationfour;
+        }
+        else
+        {
+            return locationzero;
+        }
+    }
+
+    public void moveTo(Transform a)
+    {
+        Debug.Log("Move set to true");
+        moonaMoveMent.moving = true;
+        moonaMoveMent.destination = a;
+        StartCoroutine(continuosFire());
+    }
+
+    IEnumerator continuosFire()
+    {
+        for (int i =0;i<10 ;i++)
+        {
+            MoonaFireWeapon.Aim();
+            MoonaFireWeapon.Fire();
+            yield return new WaitForSeconds(0.2F);
+        }
+    }
 
     IEnumerator FireProjectTile()
     {

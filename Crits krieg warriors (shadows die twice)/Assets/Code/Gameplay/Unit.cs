@@ -85,7 +85,7 @@ public class Unit : MonoBehaviour
 
     public void AddMaxHealth()
     {
-        float temp = maxHP * 0.5F;
+        float temp = maxHP;
         maxHP += temp;
         cHP+=temp;
         
@@ -107,7 +107,7 @@ public class Unit : MonoBehaviour
 
     public void Addatk()
     {
-        atk += atk*0.5F;
+        atk += 5;
     }
 
 

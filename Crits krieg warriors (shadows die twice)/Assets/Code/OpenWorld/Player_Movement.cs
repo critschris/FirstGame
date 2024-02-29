@@ -46,6 +46,8 @@ public class Player_Movement : MonoBehaviour
 
     private WeaponParent weaponParent;
 
+    public GameObject [] UIstuff;
+
     private void Awake()
     {
         weaponParent = gameObject.GetComponentInChildren<WeaponParent>();
@@ -93,7 +95,7 @@ public class Player_Movement : MonoBehaviour
             Vector2 targetPOS = (direction);
             StartCoroutine(Dash(targetPOS));
         }
-        if (!dashing && Input.GetMouseButtonDown(0))
+        if (!dashing && Input.GetMouseButtonDown(0)&&UIChecker())
         {
             PlayerAttack();
         }
@@ -178,7 +180,16 @@ public class Player_Movement : MonoBehaviour
     }
 
     
-
+    public bool UIChecker()
+    {
+        for (int i=0;i<UIstuff.Length ;i++) {
+            if (UIstuff[i].activeInHierarchy)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     private Vector2 GetPointerInput()
     {

@@ -8,7 +8,7 @@ public class WeaponParent : MonoBehaviour
     Vector2 direction;
 
     public Animator animator;
-    public float delay = 0.3F;
+    public float delay = 1F;
     public bool attacking;
     public Transform attackarea;
     public Transform PlayerPosition;

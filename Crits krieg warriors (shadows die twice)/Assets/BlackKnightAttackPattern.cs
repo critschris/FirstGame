@@ -15,8 +15,11 @@ public class BlackKnightAttackPattern : MonoBehaviour
     public GameObject AnimatorHolder;
     Animator KnightAnimator;
 
+    public Animator RedOutLineAnimator;
+
     public bool attacking;
     public bool moving;
+    public bool dead = false;
 
     public float speed;
 
@@ -27,21 +30,24 @@ public class BlackKnightAttackPattern : MonoBehaviour
         target = FindObjectOfType<Player_Movement>().gameObject.transform;
         BlackKnightUnit = GetComponent<Unit>();
         KnightAnimator = AnimatorHolder.GetComponent<Animator>();
+        moving = true;
+        KnightAnimator.SetBool("Walking", moving);
 
     }
 
     public IEnumerator Attack()
     {
-        KnightAnimator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.15F);
+
         boss_Moona_WeaponParent.Playerposition = FindObjectOfType<Player_Movement>().gameObject.transform.position;
         boss_Moona_WeaponParent.Aim();
-        //Red Area
+        RedOutLineAnimator.SetBool("Appear",true);
         yield return new WaitForSeconds(1F);
+        KnightAnimator.SetTrigger("Attack");
         boss_Moona_WeaponParent.HitPlayer();
         boss_Moona_WeaponParent.AttackMethod(10F);
+        RedOutLineAnimator.SetBool("Appear", false);
 
-        yield return new WaitForSeconds(3F);
+        yield return new WaitForSeconds(1F);
         attacking = false;
 
     }
@@ -50,7 +56,7 @@ public class BlackKnightAttackPattern : MonoBehaviour
     void Update()
     {
 
-        if (!attacking)
+        if (!attacking&&!dead)
         {
             moving = true;
             KnightAnimator.SetBool("Walking",moving);
@@ -80,8 +86,17 @@ public class BlackKnightAttackPattern : MonoBehaviour
 
         if (BlackKnightUnit.cHP < 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(Death());
+            
         }
+    }
+
+    public IEnumerator Death()
+    {
+        dead = true;
+        KnightAnimator.SetBool("Death",dead);
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 
     void flip()
@@ -91,12 +106,12 @@ public class BlackKnightAttackPattern : MonoBehaviour
 
     public void PlayerFinder()
     {
-        Collider2D[] found_player = Physics2D.OverlapCircleAll(transform.position, 1, PlayerLayer);
+        Collider2D[] found_player = Physics2D.OverlapCircleAll(transform.position, 3, PlayerLayer);
         try
         {
             Collider2D Found = found_player[0];
             moving = false;
-            KnightAnimator.SetBool("Walking", moving);
+            KnightAnimator.SetBool("Walking",moving);
             attacking = true;
             StartCoroutine(Attack());
         }

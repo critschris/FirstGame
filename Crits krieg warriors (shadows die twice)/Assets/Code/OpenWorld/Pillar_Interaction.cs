@@ -14,7 +14,7 @@ public class Pillar_Interaction : MonoBehaviour
 
     void Update()
     {
-        Collider2D player = Physics2D.OverlapCircle(transform.position,2f,Player);
+        Collider2D player = Physics2D.OverlapCircle(transform.position,3f,Player);
         if (player!=null)
         {
             animator.SetBool("Appear",true);
