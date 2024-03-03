@@ -30,6 +30,9 @@ public class Happen : MonoBehaviour
     public Slider healthbar;
     public Slider easehealthbar;
 
+    public GameObject LevelInstructions;
+    bool activateLevelInstructionOnce = false;
+
     //
     public GameObject PlayerUpgradeButtons;
     public Text PlayerName;
@@ -402,6 +405,13 @@ public class Happen : MonoBehaviour
 
     void Update()
     {
+
+        if (PlayerUnit.level==1&&!activateLevelInstructionOnce)
+        {
+            LevelInstructions.SetActive(true);
+            SetTimeScaletoZero();
+            activateLevelInstructionOnce = true;
+        }
 
         if (currentdamage!= PlayerUnit.atk + PlayerUnit.atk * PlayerUnit.sword.getScaling())
         {

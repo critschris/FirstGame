@@ -9,4 +9,6 @@ public class LoadNextScence : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu",LoadSceneMode.Single);
     }
+
+    
 }
