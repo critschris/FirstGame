@@ -8,7 +8,7 @@ public class Player_Movement : MonoBehaviour
 {
     public float AttackRange;
     public float movementSpeed;
-    public float dashspeed;
+    public float dashspeedmodifire = 0.15F;
     private Vector2 direction;
 
     //Dashing ability
@@ -31,7 +31,7 @@ public class Player_Movement : MonoBehaviour
     public Rigidbody2D rb;
 
 
-    private Vector2 input;
+    public Vector2 input;
     private Vector2 pointerInput;
 
     public Animator animator;
@@ -156,6 +156,7 @@ public class Player_Movement : MonoBehaviour
         }
         if (playerUnit.Stunned == false && !dashing)
         {
+            Debug.Log("entered moving condition");
             Move();
         }
     }
@@ -202,8 +203,10 @@ public class Player_Movement : MonoBehaviour
     //New Movement
     private void Move()
     {
+        //Debug.Log("Moving now");
         input = input.normalized;
         rb.MovePosition(rb.position + input * movementSpeed * Time.fixedDeltaTime);
+        //Debug.Log("Moved");
     }
 
     IEnumerator Dash(Vector2 targetPOS)
@@ -218,7 +221,7 @@ public class Player_Movement : MonoBehaviour
                 break;
             }
 
-            rb.MovePosition(rb.position+new Vector2(targetPOS.x*0.15F, targetPOS.y * 0.15F));
+            rb.MovePosition(rb.position+new Vector2(targetPOS.x*dashspeedmodifire, targetPOS.y *dashspeedmodifire));
             yield return new WaitForSeconds(0.01F);
             dashtimeCounter -= 0.01F;
          

@@ -13,7 +13,7 @@ public class Follow : MonoBehaviour
     void Update()
     {
 
-        Vector3 newPOS = new Vector3(follow.position.x, follow.position.y, -10f);
+        Vector3 newPOS = new Vector3(follow.position.x, follow.position.y, Camera.position.z);
         Camera.position = Vector3.Slerp(transform.position,newPOS,followspeed*Time.deltaTime);
 
     }

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main menu.unity
     guid: f81046a717c2fd746b4172d75460ac88
   - enabled: 1
+    path: Assets/Scenes/Tutorial_Stage.unity
+    guid: 803355cfb0f51644884b3b5aa9094532
+  - enabled: 1
     path: Assets/Scenes/OpenWorld.unity
     guid: d5c0a2de1253cda4387cad588c636857
   - enabled: 0

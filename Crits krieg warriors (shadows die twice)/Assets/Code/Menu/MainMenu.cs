@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("BGM_begin");
+        Time.timeScale = 1;
     }
 
 
