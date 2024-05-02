@@ -92,7 +92,7 @@ public class Player_Movement : MonoBehaviour
         if (!dashing&&!IsdashCoolDown&&Input.GetKeyDown(KeyCode.Space))
         {
             CoolDown1Blurr.fillAmount = 1;
-            Vector2 targetPOS = (direction);
+            Vector2 targetPOS = new Vector2(animator.GetFloat("X"),animator.GetFloat("Y")) ;
             StartCoroutine(Dash(targetPOS));
         }
         if (!dashing && Input.GetMouseButtonDown(0)&&UIChecker())
@@ -156,7 +156,6 @@ public class Player_Movement : MonoBehaviour
         }
         if (playerUnit.Stunned == false && !dashing)
         {
-            Debug.Log("entered moving condition");
             Move();
         }
     }

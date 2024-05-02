@@ -11,6 +11,15 @@ public class Dialogue : MonoBehaviour
     public int index;
     public Text text;
 
+    public bool selfclick;
+
+    public int[] indexesthatneedstopping;
+    public int counter;
+    public int stoppingathisint;
+
+    public int[] indexforopengate;
+    public int currentgate;
+
     public bool Outoflines = false;
 
     public Animator Commander;
@@ -22,6 +31,7 @@ public class Dialogue : MonoBehaviour
     {
         text = gameObject.GetComponent<Text>();
         text.text = string.Empty;
+        counter = 0;
 
     }
 
@@ -43,16 +53,20 @@ public class Dialogue : MonoBehaviour
         Commander.SetBool("Talking", false);
     }
 
-    void NextLine()
+    public void NextLine()
     {
         index++;
         if (index > lines.Length - 1)
         {
             Outoflines = true;
+            parent.SetActive(false);
             return;
         }
-        if (index == 7)
+        //Stopping on that line of text
+        if (counter< indexesthatneedstopping.Length && index == indexesthatneedstopping[counter])
         {
+            stoppingathisint = counter;
+            counter++;
             parent.SetActive(false);
             return;
         }
@@ -67,7 +81,6 @@ public class Dialogue : MonoBehaviour
         {
             if (text.text == lines[index])
             {
-                
                 NextLine();
             }
             else

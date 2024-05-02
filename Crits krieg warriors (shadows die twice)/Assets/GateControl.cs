@@ -9,34 +9,44 @@ public class GateControl : MonoBehaviour
     public GameObject Leftgate;
     public GameObject BoxHolder1;
     public GameObject BoxHolder2;
+    bool once = false;
+
+    public PlayerDetector playerDetector;
     // Start is called before the first frame update
     void Start()
     {
         gatecontroller = gameObject.GetComponent<Animator>();
+        playerDetector = gameObject.GetComponentInChildren<PlayerDetector>();
     }
 
 
-    void OpenGate()
+    public void OpenGate()
     {
         BoxHolder1.SetActive(false);
         BoxHolder2.SetActive(false);
+        gatecontroller.SetBool("Closing", false);
+        gatecontroller.SetBool("Close", false);
         gatecontroller.SetBool("Open",true);
+        gatecontroller.SetBool("Opening", true);
+
     }
 
-    void CloseGate()
+    public void CloseGate()
     {
-        gatecontroller.SetBool("Close", true);
-        gatecontroller.SetBool("Open", false);
-        while (Leftgate.transform.localPosition.x!= -0.756)
-        {
-        }
         BoxHolder1.SetActive(true);
         BoxHolder2.SetActive(true);
-
-        
-        gatecontroller.SetBool("Close", false);
+        gatecontroller.SetBool("Opening", false);
+        gatecontroller.SetBool("Open", false);
+        gatecontroller.SetBool("Closing", true);
+        gatecontroller.SetBool("Close", true);
 
     }
 
+
+    
+    public void Update()
+    {
+        
+    }
 
 }
