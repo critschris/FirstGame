@@ -85,9 +85,6 @@ public class Happen : MonoBehaviour
     public Sprite BigBurtha;
 
     //Ending button
-
-    public GameObject exittomainmenu;
-
     public GameObject MeteorPrefab;
 
     private void Awake()
@@ -250,7 +247,7 @@ public class Happen : MonoBehaviour
 
     public void checkifnomorelevelpoints()
     {
-        if (PlayerUnit.levelpoints==0)
+        if (PlayerUnit.levelpoints<1)
         {
             PlayerUpgradeButtons.SetActive(false);
         }
@@ -348,9 +345,6 @@ public class Happen : MonoBehaviour
     {
             healthbar.value = (PlayerUnit.cHP) /(PlayerUnit.maxHP);
             currenthealth = PlayerUnit.cHP;
-       
-
-        
 
         if (healthbar.value != easehealthbar.value)
         {
@@ -385,12 +379,7 @@ public class Happen : MonoBehaviour
     }
     public void replayScene()
     {
-        SceneManager.LoadScene(2);
-    }
-
-    public void exitToMainMenu()
-    {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void DeActivePillar()
@@ -405,7 +394,7 @@ public class Happen : MonoBehaviour
 
     void Update()
     {
-
+        checkifnomorelevelpoints();
         if (PlayerUnit.level==1&&!activateLevelInstructionOnce)
         {
             LevelInstructions.SetActive(true);
@@ -467,6 +456,7 @@ public class Happen : MonoBehaviour
         {
             Player.SetActive(false);
             PlayerStats.Reset();
+            FindObjectOfType<AudioManager>().StopAll();
             deathscreen.SetActive(true);
             Time.timeScale = 0;
         }

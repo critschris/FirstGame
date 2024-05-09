@@ -9,7 +9,6 @@ public class GateControl : MonoBehaviour
     public GameObject Leftgate;
     public GameObject BoxHolder1;
     public GameObject BoxHolder2;
-    bool once = false;
 
     public PlayerDetector playerDetector;
     // Start is called before the first frame update

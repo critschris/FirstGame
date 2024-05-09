@@ -6,7 +6,14 @@ public class DeathOFDummyDetector : MonoBehaviour
 {
     public DummyHealthUpdate[] dummies;
     bool alldummiesdead = false;
+    TutorialGameManager tutorialGM;
+    bool once;
 
+    private void Start()
+    {
+        tutorialGM = FindObjectOfType<TutorialGameManager>();
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -17,5 +24,12 @@ public class DeathOFDummyDetector : MonoBehaviour
             }
         }
         alldummiesdead = true;
+
+        if (!once&&alldummiesdead)
+        {
+            tutorialGM.ActivateDialogue();
+            tutorialGM.incrementcurrentgate();
+            once = true;
+        }
     }
 }

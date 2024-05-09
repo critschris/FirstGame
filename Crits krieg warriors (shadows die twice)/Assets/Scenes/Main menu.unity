@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1babeabbac007444898c099774303fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkPoint: {fileID: 7132857370506022336, guid: f3cab22d85c6fce47b51313448e78eea, type: 3}
 --- !u!1 &57312288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +1455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: v.1.4.0.0.1
+  m_Text: v.1.5.0.0.1
 --- !u!222 &573705036
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2499,8 +2500,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.112984, y: -70}
-  m_SizeDelta: {x: 799.7388, y: 92.2048}
+  m_AnchoredPosition: {x: 23.4456, y: -70}
+  m_SizeDelta: {x: 812.4039, y: 92.2048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292441115
 MonoBehaviour:
@@ -2535,7 +2536,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Warning: dash follows the mouse'
+  m_Text: 'Warning: dash follows movement keys'
 --- !u!222 &1292441116
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4201,6 +4202,7 @@ MonoBehaviour:
   allsounds_level: {fileID: 3828683106955403335, guid: 7fd5a88f708286043a6bd9bd3e4b50b5, type: 3}
   allsounds_main_menu: {fileID: 812047896}
   allsounds_Open_world: {fileID: 7601658222136039487, guid: 025e77258e5fa2146821472bb3c8089e, type: 3}
+  allsounds_Tutorial: {fileID: 9127024510059474746, guid: 1698e7b43eb23c3418b7b32f1dcba657, type: 3}
 --- !u!1 &1914346039
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,14 +31,14 @@ public class Dialogue : MonoBehaviour
     {
         text = gameObject.GetComponent<Text>();
         text.text = string.Empty;
-        counter = 0;
+        //counter = 0;
 
     }
 
-    public void StartDialogue()
+    public void StartDialogue(int a)
     {
         text.text = string.Empty;
-        index = 0;
+        index = a;
         StartCoroutine(Talk());
     }
 

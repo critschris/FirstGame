@@ -36,6 +36,8 @@ public class DungeonSceneActivator : MonoBehaviour
             Debug.Log("Activated cutscene");
 
             once = false;
+            FindObjectOfType<Happen>().SavePlayerStats();
+            FindObjectOfType<Happen>().LoadStatsForDungeon();
             StartCoroutine(Dialog());
             
         }
@@ -45,8 +47,6 @@ public class DungeonSceneActivator : MonoBehaviour
     {
         Instantiate(mapPreFab,Dungeonarea.position,Quaternion.identity);
         FindObjectOfType<AudioManager>().Stop("BGM");
-        FindObjectOfType<Happen>().SavePlayerStats();
-        FindObjectOfType<Happen>().LoadStatsForDungeon();
         yield return new WaitForSeconds(3);
         Fade.SetTrigger("Fade");
         yield return new WaitForSeconds(1);

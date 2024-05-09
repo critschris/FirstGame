@@ -12,6 +12,8 @@ public class SettingsMenu : MonoBehaviour
 
     public AudioManager allsounds_Open_world;
 
+    public AudioManager allsounds_Tutorial;
+
     
 
     public void Setvolume(float volume)
@@ -20,6 +22,7 @@ public class SettingsMenu : MonoBehaviour
         allsounds_level.setpercent(volume);
         allsounds_main_menu.setpercent(volume);
         allsounds_Open_world.setpercent(volume);
+        allsounds_Tutorial.setpercent(volume);
     }
 
     

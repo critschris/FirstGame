@@ -7,5 +7,9 @@ public class CheckPoint : MonoBehaviour
 
     public bool TrialComplete;
 
+    public bool GotToBoss;
+
+    public bool FinishedTutorial;
+
     
 }

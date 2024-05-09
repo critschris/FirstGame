@@ -32323,6 +32323,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 47882720}
         m_TargetAssemblyTypeName: Happen, Assembly-CSharp
+        m_MethodName: SetTimeScaleToOne
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 47882720}
+        m_TargetAssemblyTypeName: Happen, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
@@ -110533,11 +110545,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5132517989499939928, guid: 8cd8def5089d5224ea886580d0469f8d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5132517989499939928, guid: 8cd8def5089d5224ea886580d0469f8d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5132517989831504664, guid: 8cd8def5089d5224ea886580d0469f8d, type: 3}
       propertyPath: atk
@@ -110601,7 +110613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5132517989831504677, guid: 8cd8def5089d5224ea886580d0469f8d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5132517989831504678, guid: 8cd8def5089d5224ea886580d0469f8d, type: 3}
       propertyPath: m_Size.x

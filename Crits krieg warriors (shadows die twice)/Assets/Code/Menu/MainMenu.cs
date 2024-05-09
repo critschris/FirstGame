@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    CheckPoint checkPoint;
 
     void Start()
     {
@@ -15,7 +17,13 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        if (!checkPoint.FinishedTutorial) { 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
     }
 
     public void QuitGame()
