@@ -55,37 +55,38 @@ public class BlackKnightAttackPattern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!attacking&&!dead)
+        if (!attacking && !dead)
         {
             moving = true;
-            KnightAnimator.SetBool("Walking",moving);
+            KnightAnimator.SetBool("Walking", moving);
             transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
 
             PlayerFinder();
         }
-
-        if (target.position.x >= transform.position.x)
-        {
-            if (sprite.flipX == true)
+        if (!dead) { 
+            if (target.position.x >= transform.position.x)
             {
-                flip();
-            }
+                if (sprite.flipX == true)
+                {
+                    flip();
+                }
 
-        }
-        else
-        {
-            if (sprite.flipX == false)
+            }
+            else
             {
-                flip();
+                if (sprite.flipX == false)
+                {
+                    flip();
+                }
+
             }
-
         }
-
         BlackKnightHealth.value = (BlackKnightUnit.cHP / BlackKnightUnit.maxHP);
 
         if (BlackKnightUnit.cHP < 0)
         {
+            StopAllCoroutines();
+            RedOutLineAnimator.SetBool("Appear", false);
             StartCoroutine(Death());
             
         }

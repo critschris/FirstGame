@@ -845,6 +845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1695722745510827797, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 7501526564570663514, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}
       propertyPath: delay
       value: 1
@@ -883,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7501526564834327036, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7501526564834327036, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -944,6 +948,10 @@ PrefabInstance:
     - target: {fileID: 7501526564834327039, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}
       propertyPath: Invulnarable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8883856776969011428, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fae402646680a449b77ef8a7001ce89, type: 3}

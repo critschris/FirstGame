@@ -48,6 +48,12 @@ public class Player_Movement : MonoBehaviour
 
     public GameObject [] UIstuff;
 
+    [SerializeField]
+    TrailRenderer playerDashTrail;
+
+    [SerializeField]
+    TrailRenderer WiderplayerDashTrail;
+
     public void Awake()
     {
         weaponParent = gameObject.GetComponentInChildren<WeaponParent>();
@@ -64,6 +70,8 @@ public class Player_Movement : MonoBehaviour
         playersword = playerUnit.sword;
         //swordscaling = playersword.getScaling();
         dashtimeCounter = dashtime;
+        playerDashTrail.emitting = false;
+        WiderplayerDashTrail.emitting = false;
     }
 
     private void Update()
@@ -92,8 +100,8 @@ public class Player_Movement : MonoBehaviour
         if (!dashing&&!IsdashCoolDown&&Input.GetKeyDown(KeyCode.Space))
         {
             CoolDown1Blurr.fillAmount = 1;
-            Vector2 targetPOS = new Vector2(animator.GetFloat("X"),animator.GetFloat("Y")) ;
-            StartCoroutine(Dash(targetPOS));
+            Vector2 targetPOS = new Vector2(animator.GetFloat("X"),animator.GetFloat("Y"));
+            StartCoroutine(Dash(targetPOS.normalized));
         }
         if (!dashing && Input.GetMouseButtonDown(0)&&UIChecker())
         {
@@ -125,7 +133,19 @@ public class Player_Movement : MonoBehaviour
             swordscaling = playersword.getScaling();
             setAbility2up();
         }
-       
+
+        if (playerDashTrail.gameObject.activeInHierarchy) {
+            if (animator.GetFloat("Y") == 1)
+            {
+                playerDashTrail.sortingOrder = 1;
+                WiderplayerDashTrail.sortingOrder = 1;
+            }
+            else
+            {
+                playerDashTrail.sortingOrder = -1;
+                WiderplayerDashTrail.sortingOrder = -1;
+            }
+        }
 
     }
 
@@ -211,6 +231,8 @@ public class Player_Movement : MonoBehaviour
     IEnumerator Dash(Vector2 targetPOS)
     {
         dashing = true;
+        playerDashTrail.emitting = true;
+        WiderplayerDashTrail.emitting = true;
         playerUnit.Invulnarable = true;
         while (dashtimeCounter>0)
         {
@@ -228,6 +250,8 @@ public class Player_Movement : MonoBehaviour
         playerUnit.Invulnarable = false;
         dashtimeCounter = dashtime;
         IsdashCoolDown = true;
+        playerDashTrail.emitting =false;
+        WiderplayerDashTrail.emitting = false;
         dashing = false;
         
         yield return null;

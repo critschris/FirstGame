@@ -77,7 +77,7 @@ public class SmallSummonAttackPattern : MonoBehaviour
         catch (System.Exception nothingfound)
         {
             Rooted = false;
-            return;
+            //return;
         }
     }
 

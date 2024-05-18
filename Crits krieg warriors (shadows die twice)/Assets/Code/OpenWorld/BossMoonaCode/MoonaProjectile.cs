@@ -33,8 +33,9 @@ public class MoonaProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Unit unithit = collision.GetComponent<Unit>();
-        if (unithit!=null&&unithit.name!= "Moona Hoshinova")
+        Unit unithit = collision.gameObject.GetComponent<Unit>();
+        
+        if (unithit!=null)
         {
             unithit.takeDamage(damage);
             Destroy(gameObject);
